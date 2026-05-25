@@ -1,5 +1,5 @@
-numpy
-pandas
-joblib
-tensorflow
-streamlit
+streamlit==1.45.1
+tensorflow==2.16.1
+numpy==1.26.4
+pandas==2.2.2
+joblib==1.4.2
