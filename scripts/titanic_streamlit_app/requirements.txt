@@ -1,6 +1,6 @@
 streamlit
-tensorflow==2.12
-numpy==2.0.0
+tensorflow
+numpy
 pandas
 joblib
 pathlib
