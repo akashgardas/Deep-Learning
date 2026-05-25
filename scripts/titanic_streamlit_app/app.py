@@ -4,6 +4,9 @@ import pandas as pd
 import joblib
 import tensorflow as tf
 from tensorflow.keras.models import load_model
+from pathlib import Path
+
+BASE_DIR = Path(__file__).parent
 
 # -------------------------------
 # SECTION 1 — Header Area
@@ -27,7 +30,7 @@ You can experiment with different passenger details and see survival probabiliti
 # -------------------------------
 @st.cache_resource
 def load_scaler():
-    return joblib.load("titanic_minmaxscaler.pkl")
+    return joblib.load(BASE_DIR / "titanic_minmaxscaler.pkl")
 
 scaler = load_scaler()
 
@@ -57,7 +60,7 @@ model_choice = st.radio("Choose Model:", ["titanic_model_0.keras", "titanic_mode
 # Load selected model
 @st.cache_resource
 def load_selected_model(model_name):
-    return load_model(model_name)
+    return load_model(BASE_DIR / model_name)
 
 model = load_selected_model(model_choice)
 

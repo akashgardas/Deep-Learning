@@ -3,3 +3,4 @@ tensorflow==2.12
 numpy
 pandas
 joblib
+pathlib
