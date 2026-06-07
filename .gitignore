@@ -15,12 +15,6 @@ ENV/
 # Dataset files (optional, remove if needed)
 datasets/
 
-# Model files
-*.h5
-*.model
-*.pt
-*.pth
-
 # IDE files
 .vscode/
 .idea/
