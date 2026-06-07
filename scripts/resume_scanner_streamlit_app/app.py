@@ -5,6 +5,7 @@ import numpy as np
 import tensorflow as tf
 from pypdf import PdfReader
 import streamlit as st
+from pathlib import Path
 
 # ==============================================================================
 # 🎨 1. STREAMLIT PAGE CONFIG & CUSTOM STYLING
@@ -91,20 +92,27 @@ class PositionalEmbedding(tf.keras.layers.Layer):
 @st.cache_resource
 def load_deployment_artifacts():
     """Loads and caches all trained modeling layers to preserve high performance."""
-    artifacts_dir = "models"
+
+    BASE_DIR = Path(__file__).resolve().parent
+    ARTIFACTS_DIR = BASE_DIR / "models"
+
+    config_path = ARTIFACTS_DIR / "config.pkl"
+    tokenizer_path = ARTIFACTS_DIR / "tokenizer.pkl"
+    label_encoder_path = ARTIFACTS_DIR / "label_encoder.pkl"
+    model_path = ARTIFACTS_DIR / "transformer_model.keras"
     
     # Load configuration parameters
-    with open(os.path.join(artifacts_dir, "config.pkl"), "rb") as f:
+    with open(os.path.join(config_path), "rb") as f:
         config = pickle.load(f)
         
     # Load tokenizers and target text encoders
-    with open(os.path.join(artifacts_dir, "tokenizer.pkl"), "rb") as f:
+    with open(os.path.join(tokenizer_path), "rb") as f:
         tokenizer = pickle.load(f)
-    with open(os.path.join(artifacts_dir, "label_encoder.pkl"), "rb") as f:
+    with open(os.path.join(label_encoder_path), "rb") as f:
         label_encoder = pickle.load(f)
         
     # Load Keras Deep Learning Transformer Architecture
-    model_path = os.path.join(artifacts_dir, "transformer_model.keras")
+    model_path = os.path.join(model_path)
     model = tf.keras.models.load_model(
         model_path, 
         custom_objects={"PositionalEmbedding": PositionalEmbedding}
