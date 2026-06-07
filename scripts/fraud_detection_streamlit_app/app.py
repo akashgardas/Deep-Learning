@@ -14,7 +14,7 @@ APP_DIR = Path(__file__).resolve().parent
 ROOT_DIR = APP_DIR.parent.parent
 
 # Assets directory
-ASSETS_DIR = ROOT_DIR / "models" / "fraud detection assets"
+ASSETS_DIR = ROOT_DIR / "models" / "fraud_detection_assets"
 
 MODEL_PATH = ASSETS_DIR / "fraud_model.pth"
 AMOUNT_SCALER_PATH = ASSETS_DIR / "amount_scaler.pkl"
